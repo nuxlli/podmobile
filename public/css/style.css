@@ -1,0 +1,119 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Bitstream Vera Sans;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  color: #FFF;
+  /* overflow: hidden; */
+}
+
+#page {
+  width: 790px;
+  height: 418px;
+  background-color:#151c20;
+  padding: 5px;
+}
+
+.painel {
+  background-color:#5d7280;
+  padding: 2px;
+}
+
+#left {
+  width: 445px;
+  float: left;
+}
+
+/* Menu */
+#tabs {
+  height: 60px;
+  font-size: 10pt;
+  margin-bottom: 5px;
+}
+
+#tabs ul {
+  list-style: none;
+}
+
+#tabs li {
+  float: left;
+  width: 87px;
+  text-align: center;
+  height: 60px;
+  border: solid 1px #151c20;
+}
+
+#tabs li.select {
+  background: transparent url(../img/bk_menu.png);
+}
+
+#tabs a {
+  color: #b7d8ea;
+  text-decoration: none;
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  padding-top: 18px;
+}
+
+#mPodcasts a {
+	background: transparent url(../img/icons/podcasts_small.png) no-repeat center 10px;
+}
+
+#mDownloads a {
+	background: transparent url(../img/icons/downloads_small.png) no-repeat center 10px;
+}
+
+#mFavorites a {
+	background: transparent url(../img/icons/favorites_small.png) no-repeat center 10px;
+}
+
+#mComments a {
+	background: transparent url(../img/icons/comments_small.png) no-repeat center 10px;
+}
+
+#mSettings a {
+	background: transparent url(../img/icons/settings_small.png) no-repeat center 10px;
+}
+
+/* List and settings */
+#list {
+  height: 347px;
+}
+
+#list h1 {
+  height: 55px;
+  font-size: 20pt;
+  text-align: center;
+}
+
+#list h2 {
+  font-size: 40pt;
+  text-align: rigth;
+  color: #42515B;
+}
+
+#lPodcasts {
+  background: transparent url(../img/icons/podcasts.png) no-repeat 15px;
+}
+
+#right {
+  width: 340px;
+  height: 100%;
+  float: right;
+}
+
+#player {
+  height: 180px;
+  margin-bottom: 5px;
+}
+
+#comments {
+  height: 223px;
+}
