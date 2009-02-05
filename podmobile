@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# rm ~/.podmobile/podmobile.sqlite
-`dirname "$0"`/bin/podmobile.py

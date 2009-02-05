@@ -4,20 +4,10 @@
   <head>
     <title>podMobile</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <style>
-      #loading {
-        z-index: 100;
-        background: #FFF url(img/m.png) no-repeat center center;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../eibox/js/jquery-ui-themeroller/ui.all.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <div id="loading"></div>
     <div id="page">
       <div id="left">
         <div id="tabs">
@@ -72,39 +62,27 @@
       </div>
       <h2 id="msg"></h2>
     </div>
+    <div id="loading"></div>
   </body>
 </html>
 
-<link rel="stylesheet" type="text/css" href="css/jquery-ui-themeroller/ui.all.css" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!-- Application -->
+<script type="text/javascript" src="../eibox/js/eibox.js" charset="utf-8"></script>
 
-<script type="text/javascript" src="js/jquery/jquery-1.3.min.js"></script>
-<script type="text/javascript" src="css/jquery-ui-themeroller/jquery.ui.all.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.hotkeys-0.7.8.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.json-1.3.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.jfeed.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.preload.js"></script>
+<!-- Jquery -->
+<script type="text/javascript" src="../eibox/js/jquery/jquery-1.3.min.js"></script>
+<script type="text/javascript" src="../eibox/js/jquery-ui-themeroller/jquery.ui.all.js"></script>
+<script type="text/javascript" src="../eiboxjs/jquery/jquery.hotkeys-0.7.8.js"></script>
+<script type="text/javascript" src="../eiboxjs/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="../eiboxjs/jquery/jquery.json-1.3.js"></script>
+<script type="text/javascript" src="../eiboxjs/jquery/jquery.jfeed.js"></script>
+<script type="text/javascript" src="../eiboxjs/jquery/jquery.preload.js"></script>
 
 <!-- Jazz Record -->
-<script type="text/javascript" src="js/jazzrecord/javascripts/dependencies/html5/database.js"></script>
+<script src="../eibox/js/jazzrecord/javascripts/dependencies/html5/database.js" type="text/javascript" charset="utf-8"></script>
+<script src="../eibox/js/jazzrecord/build/jazz_record.js" type="text/javascript" charset="utf-8"></script>
 
-<script src="js/jazzrecord/javascripts/jazz_record.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/adapters.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/record/record.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/record/save.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/record/is_changed.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/model/model.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/association_loader.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/model/util.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/record/validate.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/model/query.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/model/save.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/model/destroy.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/model/find.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/migrations/schema_operations.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jazzrecord/javascripts/migrations/migrate.js" type="text/javascript" charset="utf-8"></script>
-
+<!-- Application -->
 <script type="text/javascript" src="js/models.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/sprintf.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/downloads.js" charset="utf-8"></script>

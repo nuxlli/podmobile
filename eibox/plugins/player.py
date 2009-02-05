@@ -8,7 +8,7 @@
 # http://code.google.com/p/podmobile
 
 
-from PyQt4 import QtCore
+from PyQt4 import QtCore, QtGui
 from PyQt4.phonon import Phonon
 
 class Player(Phonon.MediaObject):

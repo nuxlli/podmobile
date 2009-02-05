@@ -8,11 +8,7 @@
 # http://code.google.com/p/podmobile
 
 from PyQt4 import QtCore
-import sqlite3
-import cjson
-
-def d(msg):
-  print "Database: " + msg
+import sqlite3, cjson, logging
 
 def dict_factory(cursor, row):
   d = {}
@@ -24,10 +20,9 @@ class Database(QtCore.QObject):
   datas = []
   rows  = []
 
-  def __init__(self, bases_dir):
-    QtCore.QObject.__init__(self)
-    self.setObjectName("database")
-    self.bases_dir = bases_dir
+  def __init__(self, parent):
+    QtCore.QObject.__init__(self, parent)
+    #self.setObjectName("database")
 
   @QtCore.pyqtSignature("QString, QString", result = "QString")
   def open(self, name, version):
@@ -40,6 +35,7 @@ class Database(QtCore.QObject):
   @QtCore.pyqtSignature("int, QString", result = "QString")
   def query(self, dbid, query):
     query = query.toUtf8()
+    logging.debug("SQL: " + query)
     try:
       conn   = self.datas[dbid]
       cursor = conn.cursor()
@@ -58,20 +54,16 @@ class Database(QtCore.QObject):
         'message': e.args
       }
 
-    #d(cjson.encode(result))
     return cjson.encode(result)
 
   @QtCore.pyqtSignature("int, int", result = "QString")
   def item(self, dbid, row):
-    #d(cjson.encode(self.rows[dbid][row]))
     return cjson.encode(self.rows[dbid][row])
 
   @QtCore.pyqtSignature("int")
   def commit(self, dbid):
-    #d("Commit");
     self.datas[dbid].commit()
 
-  # TODO: Arrumar uma forma de fechar os bancos de dados abertos
   def close(self):
     for data in self.datas:
       data.close()
