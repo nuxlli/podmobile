@@ -59,27 +59,27 @@ class EiboxWindow(QtGui.QMainWindow):
         self.browser.setPage(self.page)
         self.browser.setObjectName('WebBrowser')
 
+        self.browser.settings().setAttribute(QtWebKit.QWebSettings.PluginsEnabled, True)
         self.frame.addToJavaScriptWindowObject("application", self)
 
         url = QtCore.QUrl("file://" + self.settings.APP_DIR + "/public/main.html")
         self.browser.load(url)
         self.setCentralWidget(self.browser)
 
-        QtCore.QMetaObject.connectSlotsByName(self)
-
-    def on_browser_titleChanged(self, title):
-      self.setWindowTitle(title)
-
     def center(self):
         width  = (QtGui.QApplication.desktop().width()  - self.width)  / 2
         height = (QtGui.QApplication.desktop().height() - self.height) / 2
 
-        self.setGeometry(width, height, self.width, self.height)
+        self.setGeometry(width, height - 100, self.width, self.height)
 
     @QtCore.pyqtSignature("QString", result = "QString")
     def pyEval(self, code):
-        code = code.toUtf8()
-        return cjson.encode(eval(str(code)))
+        return cjson.encode(eval(str(code.toUtf8())))
+
+    @QtCore.pyqtSignature("QString, QString")
+    def logging(self, type, msg):
+        msg = msg.toAscii()
+        eval("logging.%s(msg)" % str(type))
 
     @QtCore.pyqtSignature("QString", result = "QString")
     def plugin(self, classId):

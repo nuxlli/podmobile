@@ -5,7 +5,7 @@
 # Dual licensed under the MIT (MIT-LICENSE.txt)
 # and GPL (GPL-LICENSE.txt) licenses.
 #
-# http://code.google.com/p/podmobile
+# http://code.google.com/p/eibox
 
 
 from PyQt4 import QtCore, QtGui

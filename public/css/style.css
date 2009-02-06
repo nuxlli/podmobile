@@ -324,7 +324,7 @@ body.pc {
 }
 
 #progress .slider {
-  height: .6em;
+  /*height: .6em;*/
 }
 
 .ui-slider-handle {
@@ -381,4 +381,8 @@ body.pc {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.init_hide {
+  visibility: hidden;
 }

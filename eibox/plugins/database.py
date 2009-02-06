@@ -19,14 +19,25 @@ def dict_factory(cursor, row):
 class Database(QtCore.QObject):
   datas = []
   rows  = []
+  _bases_folder = './'
 
   def __init__(self, parent):
     QtCore.QObject.__init__(self, parent)
-    #self.setObjectName("database")
+
+  @QtCore.pyqtSignature("QString")
+  def setBasesFolder(self, folder):
+    folder = str(folder.toUtf8())
+    logging.debug("Set database folder %s" % folder)
+    self._bases_folder = folder
+
+  def getBasesFolder(self):
+    return self._bases_folder
+
+  bases_folder = QtCore.pyqtProperty("QString", getBasesFolder, setBasesFolder)
 
   @QtCore.pyqtSignature("QString, QString", result = "QString")
   def open(self, name, version):
-    conn = sqlite3.connect(self.bases_dir + '/' + str(name))
+    conn = sqlite3.connect(self._bases_folder + '/' + str(name))
     conn.row_factory = dict_factory
     self.datas.append(conn)
     self.rows.append([])

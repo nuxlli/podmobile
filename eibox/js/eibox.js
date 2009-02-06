@@ -12,25 +12,21 @@ function plugin(classid) {
 }
 
 /**
+ * Execute python code in window box
+ **/
+function pyEval(code) {
+  return eval(application.pyEval(code));
+}
+
+/**
  * Warape for python logging
  */
 var logging = {
   _eval: function(type, msg) {
-     application.pyEval("logging." + type + "('"+ msg +"')")
+    application.logging(type, msg)
   },
 
   debug   : function(msg) { this._eval("debug"  , msg) },
   warning : function(msg) { this._eval("warning", msg) },
   error   : function(msg) { this._eval("error"  , msg) }
 }
-
-window.database = plugin("Database");
-
-//window.download = plugin("Download");
-//var player = plugin('Player');
-//logging.debug("Teste de application");
-//alert(player.state)
-//plugin('Application', 'application');
-//plugin('Player', 'player');
-//window.application = document.application
-//plugin('Database', 'database');

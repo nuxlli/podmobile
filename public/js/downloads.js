@@ -7,6 +7,7 @@
  * http://code.google.com/p/podmobile
  */
 
+var download = plugin("Download")
 var _downloads = [];
 
 download.update.connect(function(id, amount_read, data) {
@@ -55,7 +56,7 @@ function Download(options) {
 }
 
 Download.prototype = {
-  start: function() {    
+  start: function() {
     this.filename = (this.filename == null) ? "" : this.filename;
     this.debug([this.id, this.filename]);
     download.start(this.id, this.filename);
@@ -65,7 +66,7 @@ Download.prototype = {
     this.debug(data);
     jQuery.extend(this, jQuery.evalJSON(data));
   },
-  
+
   debug: function(msg) {
     if(this.d)
       console.log("Download: " + msg);

@@ -22,6 +22,8 @@ class PodmobileWindow(EiboxWindow):
     def __init__(self, settings):
       EiboxWindow.__init__(self, settings)
 
+      self.setWindowTitle("podmobile")
+
       # Set defaults dirs
       self.home_dir = os.path.abspath(os.path.expanduser('~/.podmobile'))
       if not os.path.exists(self.home_dir):
