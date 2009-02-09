@@ -27,12 +27,20 @@ var Podcast = new JazzRecord.Model({
   hasMany: { casts: "casts" },
   columns: {
     title       : "text",
+    sanitize    : "text",
     feed        : "text",
     link        : "text",
     img         : "text",
     tn_img      : "text",
     updated     : "text",
     description : "text"
+  },
+
+  events: {
+    onSave: function() {
+      this.sanitize = this.title.sanitize();
+      return true;
+    }
   },
 
   validate: {
@@ -63,22 +71,46 @@ var Cast = new JazzRecord.Model({
     description : "text",
     url         : "text",
     length      : "number",
-    type        : "text"
+    type        : "text",
+    download    : "text",
+    local       : "text",
+    favorite    : "bool",
+    percent     : "number"
   },
-  
+
+  recordMethods: {
+    /*
+    update_percent() {
+
+    },*/
+    getPercent: function() {
+        return (this.percent == null ? 0 : this.percent) + "%";
+    },
+
+    exclude_download: function() {
+        if (this.local != null) {
+            Eibox.os.remove(this.local);
+            this.local = null;
+            this.percent = null;
+            this.download = null;
+            this.save()
+        }
+    }
+  },
+
   modelMethods: {
     findByPodcastAndGuidOrCreate: function(podcast_id, guid) {
       var result = this.find({
         conditions: "podcast_id = " + podcast_id + " AND guid = " + this.typeValue("guid", guid),
         limit: 1
       });
-      
+
       if (result == null)
         result = this.create({
           'podcast_id' : podcast_id,
           'guid'       : guid
         });
-      
+
       return result;
     }
   }

@@ -23,6 +23,7 @@ jQuery.extend($.blockUI.defaults.overlayCSS, $.blockUI.defaults.overlayCSS, {
   cursor: 'default'
 })
 
+/*
 jQuery.extend(String.prototype, {
   truncate: function(length, truncation) {
     length = length || 30;
@@ -30,7 +31,7 @@ jQuery.extend(String.prototype, {
     return this.length > length ?
       this.slice(0, length - truncation.length) + truncation : String(this);
   }
-});
+});*/
 
 function two(x) {
   return ((x>9)?"":"0")+x

@@ -60,11 +60,14 @@ class EiboxWindow(QtGui.QMainWindow):
         self.browser.setObjectName('WebBrowser')
 
         self.browser.settings().setAttribute(QtWebKit.QWebSettings.PluginsEnabled, True)
-        self.frame.addToJavaScriptWindowObject("application", self)
+        self.connect(self.frame, QtCore.SIGNAL("initialLayoutCompleted()"), self.initialLayoutCompleted)
 
         url = QtCore.QUrl("file://" + self.settings.APP_DIR + "/public/main.html")
         self.browser.load(url)
         self.setCentralWidget(self.browser)
+
+    def initialLayoutCompleted(self):
+        self.frame.addToJavaScriptWindowObject("application", self)
 
     def center(self):
         width  = (QtGui.QApplication.desktop().width()  - self.width)  / 2
@@ -82,9 +85,13 @@ class EiboxWindow(QtGui.QMainWindow):
         eval("logging.%s(msg)" % str(type))
 
     @QtCore.pyqtSignature("QString", result = "QString")
-    def plugin(self, classId):
+    def plugin(self, params):
+        params = cjson.decode(str(params.toUtf8()))
+
+        classId = params[0]
         logging.debug("New object for plugin %s" % classId)
-        classId = str(classId.toUtf8())
+
+        params = params[1:]
 
         if not(self.plugins.has_key(classId)):
             module = None
@@ -97,7 +104,14 @@ class EiboxWindow(QtGui.QMainWindow):
             self.plugins[classId] = module
 
         if self.plugins[classId] != None:
-            obj  = eval("self.plugins[classId].%s(self)" % classId)
+            p = []
+
+            for i in range(0, len(params)):
+                p.append('params[%s]' % i )
+
+            p.append('parent = self')
+
+            obj  = eval("self.plugins[classId].%s(%s)" % (classId, ','.join(p)))
             name = "eibox_%s_%d" % (classId.lower(), int(time.time()))
             self.frame.addToJavaScriptWindowObject(name, obj)
             return name

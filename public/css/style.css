@@ -52,7 +52,6 @@ body.pc {
   text-align: center;
   height: 60px;
   border: solid 1px #151c20;
-  -
 }
 
 #tabs li.select {
@@ -82,8 +81,8 @@ body.pc {
 	padding-right: 4px;
 }
 
-#comments a {
-	background: transparent url(../img/icons/comments_small.png) no-repeat center 10px;
+#commenteds a {
+	background: transparent url(../img/icons/commenteds_small.png) no-repeat center 10px;
 	padding-left: 4px;
 	padding-right: 4px;
 }
@@ -164,12 +163,15 @@ body.pc {
 }
 
 #list ul {
-  display: none;
-  height: 270px;
+  height: 265px;
   max-height: 270px;
   list-style: none;
-  margin: 2px 0;
+  margin: 3px 0;
   overflow: hidden;
+}
+
+#hidenitems {
+  display: none;
 }
 
 #list ul li:first-child {
@@ -182,6 +184,18 @@ body.pc {
   border-bottom: solid 1px #FFF;
   background-color: #7993a3;
   clear: both;
+}
+
+#list ul li.select {
+    background-color: #B37638
+}
+
+#list ul li.options img {
+  float: center;
+  max-height: 55px;
+  min-height: 0;
+  max-width: 55px;
+  min-width: 0;
 }
 
 #list ul li img{
@@ -247,6 +261,7 @@ body.pc {
 
 #player h2 {
   font-size: 9pt;
+  height: 66px;
 }
 
 #volume {
@@ -254,8 +269,8 @@ body.pc {
   width: 18px;
   height: 13px;
   margin-right: 5px;
-  margin-top: 35px;
-  margin-bottom: -12px;
+  margin-top: 0px;
+  margin-bottom: -50px;
   float: right;
   /*border: solid 1px #FF0;*/
   background: transparent url(../img/volume.png) no-repeat center;

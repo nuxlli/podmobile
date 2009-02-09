@@ -54,3 +54,13 @@ function sprintf () {
   return o.join('');
 }
 
+/**
+ * Extend string
+ */
+String.prototype.sprintf = function() {
+  var _eval  = "sprintf(this,";
+  var params = [];
+  for(i= 0; i <= arguments.length; i++)
+    params.push("arguments[" + i + "]");
+  return eval(_eval + params.join(",") + ")");
+}
