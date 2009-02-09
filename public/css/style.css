@@ -154,6 +154,10 @@ body.pc {
   background: transparent url(../img/icons/settings.png) no-repeat 15px;
 }*/
 
+#list * {
+  cursor: pointer;
+}
+
 #list {
   padding: 0 5px 0 5px;
   margin-top: -19px;
@@ -162,12 +166,15 @@ body.pc {
   clear: both;
 }
 
+#list .scrollable {
+    max-height: 265px;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
 #list ul {
-  height: 265px;
-  max-height: 270px;
   list-style: none;
   margin: 3px 0;
-  overflow: hidden;
 }
 
 #hidenitems {

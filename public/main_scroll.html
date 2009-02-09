@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>podMobile</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <!--
+    <link rel="stylesheet" type="text/css" href="../eibox/js/jquery-ui-themeroller/ui.all.css" />
+    -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div id="page">
+      <div id="left">
+        <div id="tabs">
+          <ul>
+            <li id="podcasts" class="select"><a href="#" >Podcasts</a></li>
+            <li id="downloads"><a href="#">Downloads</a></li>
+            <li id="commenteds"><a href="#">Comment.</a></li>
+            <li id="favorites"><a href="#">Favorites</a></li>
+            <!--
+            <li id="settings"><a href="#">Settings</a></li>
+            -->
+            <li id="newpodcast"><a href="#">New</a></li>
+          </ul>
+        </div>
+        <div id="content" class="painel">
+            <div class="header">
+                <div class="img"><img src="img/icons/podcasts.png" /></div>
+                <h1 class="title">Podcasts</h1>
+                <h2 class="numerable">0</h2>
+            </div>
+            <div id="list">
+                <img class="up" src="img/arrow_up.png" />
+                <div class="scrollable">
+                    <ul id="showitems">
+                        <li class="items" id="2"><img src="img/tn_default.png"/><h1>Fala Freela!</h1><h2>Mon, 22 Dec 2008 10:00:24 +0000 - FalaFreela#17...</h2><h3>5</h3></li><li class="items" id="4"><img src="img/tn_default.png"/><h1>Jovem Nerd » Nerdcast</h1><h2>Fri, 30 Jan 2009 07:07:38 -0200 - Nerdcast 146 ...</h2><h3>152</h3></li><li class="items" id="1"><img src="img/tn_default.png"/><h1>Monalisa de Pijamas</h1><h2>Thu, 29 Jan 2009 23:42:57 +0000 - Monacast 51: ...</h2><h3>20</h3></li><li class="items" id="3"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li><li class="items" id="5"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li>
+                        <li class="items" id="2"><img src="img/tn_default.png"/><h1>Fala Freela!</h1><h2>Mon, 22 Dec 2008 10:00:24 +0000 - FalaFreela#17...</h2><h3>5</h3></li><li class="items" id="4"><img src="img/tn_default.png"/><h1>Jovem Nerd » Nerdcast</h1><h2>Fri, 30 Jan 2009 07:07:38 -0200 - Nerdcast 146 ...</h2><h3>152</h3></li><li class="items" id="1"><img src="img/tn_default.png"/><h1>Monalisa de Pijamas</h1><h2>Thu, 29 Jan 2009 23:42:57 +0000 - Monacast 51: ...</h2><h3>20</h3></li><li class="items" id="3"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li><li class="items" id="5"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li>
+                        <li class="items" id="2"><img src="img/tn_default.png"/><h1>Fala Freela!</h1><h2>Mon, 22 Dec 2008 10:00:24 +0000 - FalaFreela#17...</h2><h3>5</h3></li><li class="items" id="4"><img src="img/tn_default.png"/><h1>Jovem Nerd » Nerdcast</h1><h2>Fri, 30 Jan 2009 07:07:38 -0200 - Nerdcast 146 ...</h2><h3>152</h3></li><li class="items" id="1"><img src="img/tn_default.png"/><h1>Monalisa de Pijamas</h1><h2>Thu, 29 Jan 2009 23:42:57 +0000 - Monacast 51: ...</h2><h3>20</h3></li><li class="items" id="3"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li><li class="items" id="5"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li>
+                        <li class="items" id="2"><img src="img/tn_default.png"/><h1>Fala Freela!</h1><h2>Mon, 22 Dec 2008 10:00:24 +0000 - FalaFreela#17...</h2><h3>5</h3></li><li class="items" id="4"><img src="img/tn_default.png"/><h1>Jovem Nerd » Nerdcast</h1><h2>Fri, 30 Jan 2009 07:07:38 -0200 - Nerdcast 146 ...</h2><h3>152</h3></li><li class="items" id="1"><img src="img/tn_default.png"/><h1>Monalisa de Pijamas</h1><h2>Thu, 29 Jan 2009 23:42:57 +0000 - Monacast 51: ...</h2><h3>20</h3></li><li class="items" id="3"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li><li class="items" id="5"><img src="img/tn_default.png"/><h1>RapaduraCast - Cinema Com R...</h1><h2>22/01/2009 - RapaduraCast 114 - Indicados ao Os...</h2><h3>115</h3></li>
+                    </ul>
+                </div>
+                <ul id="hidenitems"></ul>
+                <img class="down" src="img/arrow_down.png" />
+            </div>
+        </div>
+      </div>
+      <div id="right">
+        <div id="player" class="painel">
+          <img id="thumb" src="img/default.png" />
+          <h1>Podmobile</h1>
+          <h2></h2>
+          <a id="volume" href="#"></a>
+          <div id="controller">
+            <a id="bt_player" href="#"></a>
+            <a id="bt_comment" href="#"></a>
+            <a id="bt_back" href="#"></a>
+            <a id="duration" href="#">Not load</a>
+            <a id="bt_forward" href="#"></a>
+          </div>
+          <div id="progress">
+            <div class="slider init_hide">
+              <object type="application/x-qt-plugin" classid="EiboxGui.EiboxSlider" name="slider" height="15" width="220">
+                <param name="init" value="1, parent" />
+              </object>
+            </div>
+          </div>
+        </div>
+        <div id="lcomments" class="painel">
+        </div>
+      </div>
+    </div>
+    <div id="dialogs">
+      <div id="dialog_new" title="New podcast">
+        <form id="form_new">
+          <h1></h1>
+          <input type="text" id="url" name="url" value="http://"/>
+        </form>
+      </div>
+      <h2 id="msg"></h2>
+    </div>
+    <!--
+    <div id="loading"></div>
+    -->
+  </body>
+</html>
+
+<!-- Application -->
+<script type="text/javascript" src="../eibox/js/jquery/jquery-1.3.min.js"></script>
+<script type="text/javascript" src="../eibox/js/jquery/jquery.event.drag-1.4.js" charset="utf-8"></script>
+<script type="text/javascript" src="../eibox/js/SpatialTouch/jquery.scroll.js" charset="utf-8"></script>
+

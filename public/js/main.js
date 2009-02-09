@@ -160,8 +160,13 @@ function podMobile() {
         }
     })
 
+    $('#list > .scrollable').touchscroll({
+        up   : $('#list > .up'),
+        down : $("#list > .down")
+    });
+
     this.loadList();
-    this.init_player();
+    //this.init_player();
 
     // Hidde splash
     $('.init_hide').css('visibility', 'visible');
@@ -269,6 +274,7 @@ jQuery.extend(podMobile.prototype, {
         });
 
         $this.set_item_select_by_played();
+        $('#list > .scrollable').touchscroll("toTop");
     },
 
     loadList: function(options) {
