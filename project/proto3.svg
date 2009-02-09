@@ -6016,6 +6016,16 @@
        fx="17.3125"
        fy="25.53125"
        r="9.6875" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient11603"
+       id="linearGradient3728"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8621335,0,0,1.452017,-53.388767,54.982864)"
+       x1="67.261147"
+       y1="71.483019"
+       x2="135.5414"
+       y2="71.483019" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -6024,16 +6034,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1152174"
-     inkscape:cx="188.62355"
-     inkscape:cy="475.71428"
+     inkscape:zoom="1.1165358"
+     inkscape:cx="526.18109"
+     inkscape:cy="619.18406"
      inkscape:document-units="px"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="layer3"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="727"
+     inkscape:window-width="1278"
+     inkscape:window-height="707"
      inkscape:window-x="0"
      inkscape:window-y="25" />
   <metadata
@@ -9016,6 +9026,18 @@
          x="496.85867"
          y="156.35876"
          style="text-align:end;text-anchor:end">7</tspan></text>
+    <rect
+       style="opacity:1;fill:url(#linearGradient3728);fill-opacity:1;fill-rule:nonzero;stroke:#b7d8ea;stroke-width:1.13329256;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3726"
+       width="58.866707"
+       height="82.866707"
+       x="4.5993156"
+       y="117.34405"
+       ry="14.797627"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/home/arquivos/Sites/podmobile/public/img/bk_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
   <g
      inkscape:groupmode="layer"

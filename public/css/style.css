@@ -38,7 +38,7 @@ body.pc {
 /* Menu */
 #tabs {
   height: 60px;
-  font-size: 8pt;
+  font-size: 10pt;
   margin-bottom: 5px;
 }
 
@@ -48,10 +48,10 @@ body.pc {
 
 #tabs li {
   float: left;
-  width: 72px;
+  width: 85px;
   text-align: center;
   height: 60px;
-  border: solid 1px #151c20;
+  margin-right: 4px;
 }
 
 #tabs li.select {
