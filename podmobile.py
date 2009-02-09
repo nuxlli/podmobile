@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2008 Éverton Ribeiro nuxlli@gmail.com
+# Last Change: Seg 09 Fev 2009 14:52:08 BRST
+#
+# Copyright (C) 2008 Éverton Ribeiro nuxlli@gmail.com 
 #
 # Dual licensed under the MIT (MIT-LICENSE.txt)
 # and GPL (GPL-LICENSE.txt) licenses.
