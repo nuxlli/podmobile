@@ -6,12 +6,29 @@ var Eibox = {
     plugin: function() {
         if (arguments.length == 0)
           return null;
+        
+        var connects = null;
+
+        if (typeof(arguments[arguments.length - 1]) == 'object') {
+            connects = arguments[arguments.length - 1];
+            arguments.length--;
+        }
 
         var obj_name = application.plugin(jQuery.toJSON(arguments));
         this.logging.debug("Objeto id " + obj_name);
-        if (obj_name != "")
-            return eval("window." + obj_name);
-        else
+        if (obj_name != "") {
+            var obj = eval("window." + obj_name);
+            if (Eibox.empty(connects))
+                return obj;
+            // Connects events
+            else {
+                for(signal in connects) {
+                    obj[signal].connect(connects[signal]);
+                }
+                return obj;
+            }
+
+        } else
             return null;
     },
 
