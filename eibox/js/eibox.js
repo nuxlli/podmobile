@@ -23,6 +23,7 @@ var Eibox = {
             // Connects events
             else {
                 for(signal in connects) {
+                    Eibox.logging.debug('Conectando: ' + signal);
                     obj[signal].connect(connects[signal]);
                 }
                 return obj;
@@ -48,6 +49,14 @@ var Eibox = {
      */
     logging: {
         _eval: function(type, msg) {
+          switch(typeof(msg)) {
+              case('undefined'):
+                  msg = 'undefined';
+                  break;
+              case('object'):
+                  msg = $.toJSON(msg);
+                  break
+          }
           application.logging(type, msg);
         },
 

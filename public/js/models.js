@@ -38,7 +38,8 @@ var Podcast = new JazzRecord.Model({
 
   events: {
     onSave: function() {
-      this.sanitize = this.title.sanitize();
+      if (!Eibox.empty(this.title))
+        this.sanitize = this.title.sanitize();
       return true;
     }
   },
