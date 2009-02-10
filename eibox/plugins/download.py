@@ -66,6 +66,14 @@ class Download(QtCore.QObject):
 
         self._status = "stoped"
         self.emit(QtCore.SIGNAL("statusChanged()"))
+    
+    @QtCore.pyqtSignature("")
+    def remove_file(self):
+        if not(self.fp == None or self.fp.closed):
+            self.fp.close()
+
+        if (os.path.exists(self.saveFileName)):
+            os.remove(self.saveFileName)
 
     def on_reply_readyRead(self):
         if (self.fp == None or self.fp.closed):

@@ -135,7 +135,7 @@ function podMobile($) {
 
                     if (Eibox.empty(data.down) && (id == 'download' || id == 'download_pause')) {
                         if (data.cast.local == null) {
-                            data.cast.local = self.info.home_dir + data.podcast.sanitize + '/' +
+                            data.cast.local = self.info.home_dir + data.podcast.id + '/' +
                                               data.cast.id + '_' + Eibox.os.path.basename(data.cast.url)
                             data.cast.save()
                         }
@@ -159,7 +159,7 @@ function podMobile($) {
                             data.cast.favorite = true;
                             data.cast.save();
                             self.contents.favorites.items.push(list);
-                            self.loadList();
+                            self.reloadCurrentContent();
                             break;
                         case('favorite_del'):
                             data.cast.favorite = false;
@@ -167,7 +167,7 @@ function podMobile($) {
                             self.contents.favorites.items = jQuery.grep(self.contents.favorites.items, function(n) {
                                return $(n).attr('id') != list.attr('id');
                             });
-                            self.loadList();
+                            self.reloadCurrentContent();
                             break;
                         case('play'):
                             if (data.cast.download == "download" && data.cast.local != null) {
@@ -184,17 +184,17 @@ function podMobile($) {
                                 self.player.setCurrentSource(data.cast.local);
                             }
                             self.player.play();
-                            self.loadList();
+                            self.reloadCurrentContent();
                             return;
                         case('download'):
                             data.down.start();
                             self.contents.downloads.items.push(list);
-                            self.loadList();
+                            self.reloadCurrentContent();
                             return;
                         case('download_pause'):
                             data.down.pause();
                             self.contents.downloads.items.push(list);
-                            self.loadList();
+                            self.reloadCurrentContent();
                             return;
                         case('download_exclude'):
                             if (!Eibox.empty(data.down)) {
@@ -205,10 +205,12 @@ function podMobile($) {
                             self.contents.downloads.items = jQuery.grep(self.contents.downloads.items, function(n) {
                                return $(n).attr('id') != list.attr('id');
                             });
-                            self.loadList();
+                            self.reloadCurrentContent();
                             return;
                     }
                 }
+
+                list.addClass('select');
 
                 self.item_opened.item = list;
                 self.item_opened.content = list.html();
@@ -266,9 +268,18 @@ function podMobile($) {
         }
     }
 
+    self.current_content = null;
+
+    self.reloadCurrentContent = function() {
+        if (!Eibox.empty(self.current_content))
+            self.setContent(self.current_content)
+    }
+
     self.setContent = function(content) {
+        self.current_content = content;
+
         self.divs.content.find('.numerable').html(content.items.length);
-        self.divs.content.find('.title').html(content.title);
+        self.divs.content.find('.title').html(content.title.truncate(20));
         self.divs.content.find('.img > img').attr('src', content.img);
 
         self.list_restart_itens();
@@ -294,6 +305,7 @@ function podMobile($) {
         switch(options.tab.attr('id')) {
             case('podcasts'):
                 if (options.refresh || self.contents.podcasts.items.length == 0) {
+                    self.contents.podcasts.items = [];
                     var podcasts = Podcast.all({order: 'title'});
 
                     $(podcasts).each(function() {
@@ -308,11 +320,6 @@ function podMobile($) {
                                    last_cast.truncate(50),
                                    this.casts.length
                                    ));
-
-                        item.find('img:last').preload({
-                            placeholder: "img/tn_default.png",
-                            notFound: "img/tn_default.png"
-                        });
 
                         item.data('list', {
                             type: 'podcast',
@@ -333,7 +340,7 @@ function podMobile($) {
                 self.setContent(self.contents.podcasts);
                 break;
             default:
-                self.setContent($top.contents[options.tab.attr('id')]);
+                self.setContent(self.contents[options.tab.attr('id')]);
         }
     }
 
@@ -403,9 +410,85 @@ function podMobile($) {
         if (window.regexp_link.test(url)) {
             msg("Connecting...");
             self.input_url.attr('disabled', true);
+            var feedparser = Eibox.plugin('Eiboxfeedparser', url, {
+                statusChanged: function() {
+                    switch(feedparser.status) {
+                        case('downloading'):
+                            msg('Download...');
+                            break;
+                        case('process'):
+                            msg('Processing...');
+                            break
+                    }
+                },
+                error: function(code, message) {
+                    msg(message);
+                    self.input_url.attr('disabled', false);
+                },
+                
+                /*
+                downloadProgress: function(received, total) {
+                    Eibox.logging.debug("Download: %s %s".sprintf(received, total));
+                },*/
+
+                finishedProcess: function(result) {
+                    self.processFeed(url, $.evalJSON(result));
+                }
+            });
+            feedparser.start();
         } else {
             msg("Invalid url, try again!");
         }
+    }
+
+    self.processFeed = function(feed, result) {
+        var p = Podcast.findByOrCreate("feed", feed, 0);
+        
+        // Process image
+        $('<img src="' + result.feed.image.href + '">').preload({ onComplete : function (pre_result) {
+            if (pre_result.failed) {
+              var img = "img/tn_default.png";
+            } else {
+              var img = self.info.home_dir + p.id + '/' + 'avatar';
+              var down = Eibox.plugin("Download", pre_result.image, img, true)
+              down.start();
+            }
+
+            p.updateAttributes({
+                title       : result.feed.title,
+                link        : result.feed.link,
+                updated     : Eibox.empty(result.feed.updated_parser) ? null : self.date_parser(result.feed.updated_parsed),
+                img         : img,
+                tn_img      : img
+            });
+            p.save();
+
+            
+            $(result.entries).each(function() {
+                //Eibox.logging.debug($.toJSON(this));
+                if (Eibox.empty(this.enclosures))
+                  return true;
+
+                var c = Cast.findByPodcastAndGuidOrCreate(p.id, this.id);
+
+                c.updateAttributes({
+                   title   : this.title,
+                   link    : this.link,
+                   updated : Eibox.empty(this.updated_parser) ? null : self.date_parser(this.updated_parsed),
+                   url     : this.enclosures[0].href,
+                   length  : this.enclosures[0].length,
+                   type    : this.enclosures[0].type
+                });
+                c.save()
+            });
+            
+            $.unblockUI();
+            self.loadList({ refresh: true });
+        }});
+    }
+
+    self.date_parser = function(d){
+        return "%s%s%s%s%s".sprintf(d[0], d[1], d[2], d[3], d[4]);
     }
 
     /**

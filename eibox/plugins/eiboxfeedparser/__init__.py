@@ -44,6 +44,8 @@ class Eiboxfeedparser(Download):
             self._status = 'processed'
             self.emit(QtCore.SIGNAL("finishedProcess(QString)"), self.feed)
 
+        self.remove_file()
+
     @QtCore.pyqtSignature('', result="QString")
     def getcontent(self):
         name = ""
