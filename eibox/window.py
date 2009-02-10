@@ -88,22 +88,22 @@ class EiboxWindow(QtGui.QMainWindow):
     def plugin(self, params):
         params = cjson.decode(str(params.toUtf8()))
 
-        classId = params[0]
+        classId    = params[0]
+        moduleName = classId.lower()
         logging.debug("New object for plugin %s" % classId)
 
         params = params[1:]
 
-        if not(self.plugins.has_key(classId)):
-            module = None
-            for folder in self.settings.PLUGINS:
-                filename = os.path.join(folder, classId.lower() + ".py")
-                logging.debug(filename)
-                if os.path.exists(filename):
-                    module = imp.load_source(classId.lower(), filename)
-                    break
-            self.plugins[classId] = module
+        if not(self.plugins.has_key(moduleName)):
+            try:
+                module = imp.find_module(moduleName, self.settings.PLUGINS)
+                module = imp.load_module(moduleName, module[0], module[1], module[2])
+            except ImportError, e:
+                module = None               
 
-        if self.plugins[classId] != None:
+            self.plugins[moduleName] = module
+
+        if self.plugins[moduleName] != None:
             p = []
 
             for i in range(0, len(params)):
@@ -111,8 +111,8 @@ class EiboxWindow(QtGui.QMainWindow):
 
             p.append('parent = self')
 
-            obj  = eval("self.plugins[classId].%s(%s)" % (classId, ','.join(p)))
-            name = "eibox_%s_%d" % (classId.lower(), int(time.time()))
+            obj  = eval("self.plugins[moduleName].%s(%s)" % (classId, ','.join(p)))
+            name = "eibox_%s_%d" % (moduleName, int(time.time()))
             self.frame.addToJavaScriptWindowObject(name, obj)
             return name
 
