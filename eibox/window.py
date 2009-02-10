@@ -8,6 +8,7 @@ from page import *
 
 class EiboxWindow(QtGui.QMainWindow):
     plugins = {}
+    plugins_instances = []
     width   = 800
     height  = 428
 
@@ -67,6 +68,11 @@ class EiboxWindow(QtGui.QMainWindow):
         self.setCentralWidget(self.browser)
 
     def initialLayoutCompleted(self):
+        for i in range(0, len(self.plugins_instances)):
+            i = self.plugins_instances.pop()
+            i.deleteLater();
+            del(i)
+
         self.frame.addToJavaScriptWindowObject("application", self)
 
     def center(self):
@@ -112,6 +118,7 @@ class EiboxWindow(QtGui.QMainWindow):
             p.append('parent = self')
 
             obj  = eval("self.plugins[moduleName].%s(%s)" % (classId, ','.join(p)))
+            self.plugins_instances.append(obj)
             name = "eibox_%s_%d" % (moduleName, int(time.time()))
             self.frame.addToJavaScriptWindowObject(name, obj)
             return name
