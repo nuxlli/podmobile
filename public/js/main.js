@@ -306,6 +306,9 @@ function podMobile($) {
             case('podcasts'):
                 if (options.refresh || self.contents.podcasts.items.length == 0) {
                     self.contents.podcasts.items = [];
+                    self.contents.downloads.items = [];
+                    self.contents.favorites.items = [];
+
                     var podcasts = Podcast.all({order: 'title'});
 
                     $(podcasts).each(function() {
@@ -447,9 +450,12 @@ function podMobile($) {
         // Process image
         $('<img src="' + result.feed.image.href + '">').preload({ onComplete : function (pre_result) {
             if (pre_result.failed) {
-              var img = "img/tn_default.png";
+              var img    = "img/default.png";
+              var tn_img = "img/tn_default.png";
             } else {
               var img = self.info.home_dir + p.id + '/' + 'avatar';
+              // TODO : Adicionar miniatura de imagem
+              var tn_img = img;
               var down = Eibox.plugin("Download", pre_result.image, img, true)
               down.start();
             }
@@ -459,7 +465,7 @@ function podMobile($) {
                 link        : result.feed.link,
                 updated     : Eibox.empty(result.feed.updated_parser) ? null : self.date_parser(result.feed.updated_parsed),
                 img         : img,
-                tn_img      : img
+                tn_img      : tn_img
             });
             p.save();
 
