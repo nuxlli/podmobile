@@ -496,34 +496,47 @@ function podMobile($) {
      */
     self.init_player = function() {
         self.player = Eibox.plugin("Player");
+        //self.player.start();
 
         // Slider
         var slider = document.slider;
+        slider.minimum = 0;
         var total  = 0;
-        slider.valueChanged.connect(function(value) {
-            self.player.seek(total*value/100);
-        });
 
-        //this.player.setCurrentSource('/home/nuxlli/Downloads/nerdcast_032_jogosdetabuleiro.mp3');
-
-        self.player.totalTimeChanged.connect(function(time) {
-            total = time;
-            slider.value = 0;
-            $('#duration').html("00:00/" + convertTime(total));
-        });
-
-        self.player.tick.connect(function(time) {
-            slider.value = Math.floor(time*100/total);
-            $('#duration').html(convertTime(time) + "/" + convertTime(total));
-        });
-
+        function setDurationBox(position, duration) {
+            $('#duration').html(convertTime(position) + "/" + convertTime(duration));
+        }
+        
         var bt_player = $('#bt_player').click(function() {
-            (self.player.state() == 2) ? self.player.pause() : self.player.play();
+            (self.player.state() == 'GST_STATE_PLAYING') ? self.player.pause() : self.player.play();
+        });
+
+        self.player.totalTimeChanged.connect(function(duration) {
+            slider.value = 0;
+            setDurationBox(0, duration);
+        });
+
+        slider.sliderMoved.connect(function(value) {
+            setDurationBox(value, self.player.duration);
+            self.player.seek(value);
+        });
+
+        self.player.finished.connect(function() {
+            setDurationBox(0, self.player.duration);
+            self.player.stop();
+            self.player.seek(0);
+            slider.value = 0;
+        });
+        
+        self.player.tick.connect(function(position, duration) {
+            slider.maximum = duration;
+            slider.value   = position;
+            setDurationBox(position, duration);
         });
 
         self.player.stateChanged.connect(function(newstate, oldstate) {
-            switch(self.player.state()) {
-                case(2): //paused
+            switch(newstate) {
+                case('GST_STATE_PLAYING'): //paused
                     bt_player.css("background-image", "url(img/bt_pause.png)");
                     break;
                 default:
