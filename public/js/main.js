@@ -101,12 +101,17 @@ function podMobile($) {
         self.divs.list.find('li').live('click', self.item_click);
 
         $('#list > .scrollable').touchscroll({
-            up   : $('#list > .up'),
-            down : $("#list > .down")
+            up   : '#list .up',
+            down : "#list .down"
+        });
+
+        $('#lcomments > .scrollable').touchscroll({
+            up   : '#lcomments .up',
+            down : "#lcomments .down"
         });
 
         self.loadList();
-        self.init_player();
+        //self.init_player();
 
         // Hidde splash
         $('.init_hide').css('visibility', 'visible');

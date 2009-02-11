@@ -1,83 +1,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-  <head>
-    <title>podMobile</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <!--
-    <link rel="stylesheet" type="text/css" href="../eibox/js/jquery-ui-themeroller/ui.all.css" />
-    -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-  </head>
-  <body>
-    <div id="page">
-      <div id="left">
-        <div id="tabs">
-          <ul>
-            <li id="podcasts" class="select"><a href="#" >Podcasts</a></li>
-            <li id="downloads"><a href="#">Downloads</a></li>
-            <li id="commenteds"><a href="#">Comment.</a></li>
-            <li id="favorites"><a href="#">Favorites</a></li>
-            <!--
-            <li id="settings"><a href="#">Settings</a></li>
-            -->
-            <li id="newpodcast"><a href="#">New</a></li>
-          </ul>
-        </div>
-        <div id="content" class="painel">
-          <div class="header">
-            <div class="img"><img src="img/icons/podcasts.png" /></div>
-            <h1 class="title">Podcasts</h1>
-            <h2 class="numerable">0</h2>
-          </div>
-          <div id="list">
-            <img class="up" src="img/arrow_up.png" />
-            <div class="scrollable">
-                <ul id="showitems"></ul>
+    <head>
+        <title>podMobile</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <!--
+        <link rel="stylesheet" type="text/css" href="../eibox/js/jquery-ui-themeroller/ui.all.css" />
+        -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+    <body>
+        <div id="page">
+            <div id="right">
+                <div id="tabs">
+                    <ul>
+                        <li id="podcasts" class="select"><a href="#" >Podcasts</a></li>
+                        <li id="downloads"><a href="#">Downloads</a></li>
+                        <li id="commenteds"><a href="#">Comment.</a></li>
+                        <li id="favorites"><a href="#">Favorites</a></li>
+                        <!--
+                        <li id="settings"><a href="#">Settings</a></li>
+                        -->
+                        <li id="newpodcast"><a href="#">New</a></li>
+                    </ul>
+                </div>
+                <div id="content" class="painel">
+                    <div class="header">
+                        <div class="img"><img src="img/icons/podcasts.png" /></div>
+                        <h1 class="title">Podcasts</h1>
+                        <h2 class="numerable">0</h2>
+                    </div>
+                    <div id="list">
+                        <img class="up" src="img/arrow_up.png" />
+                        <div class="scrollable">
+                            <ul id="showitems"></ul>
+                        </div>
+                        <ul id="hidenitems"></ul>
+                        <img class="down" src="img/arrow_down.png" />
+                    </div>
+                </div>
             </div>
-            <ul id="hidenitems"></ul>
-            <img class="down" src="img/arrow_down.png" />
-          </div>
-        </div>
-      </div>
-      <div id="right">
-        <div id="player" class="painel">
-          <img id="thumb" src="img/default.png" />
-          <h1>Podmobile</h1>
-          <h2></h2>
-          <a id="volume" href="#"></a>
-          <div id="controller">
-            <a id="bt_player" href="#"></a>
-            <a id="bt_comment" href="#"></a>
-            <a id="bt_back" href="#"></a>
-            <a id="duration" href="#">Not load</a>
-            <a id="bt_forward" href="#"></a>
-          </div>
-          <div id="progress">
-            <div class="slider init_hide">
-              <object type="application/x-qt-plugin" classid="EiboxGui.EiboxSlider" name="slider" height="15" width="220">
-                <param name="init" value="1, parent" />
-              </object>
+            <div id="left">
+                <div id="player" class="painel">
+                    <img id="thumb" src="img/default.png" />
+                    <h1>Podmobile</h1>
+                    <h2></h2>
+                    <a id="volume" href="#"></a>
+                    <div id="controller">
+                        <a id="bt_player" href="#"></a>
+                        <a id="bt_comment" href="#"></a>
+                        <a id="bt_back" href="#"></a>
+                        <a id="duration" href="#">Not load</a>
+                        <a id="bt_forward" href="#"></a>
+                    </div>
+                    <div id="progress">
+                        <div class="slider init_hide">
+                            <object type="application/x-qt-plugin" classid="EiboxGui.EiboxSlider" name="slider" height="15" width="220">
+                                <param name="init" value="1, parent" />
+                            </object>
+                        </div>
+                    </div>
+                </div>
+                <div id="lcomments" class="painel">
+                    <h1>Comments</h1>
+                    <img class="up" src="img/arrow_up.png" />
+                    <div class="scrollable">
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 1</li>
+                            <li>Item 1</li>
+                            <li>Item 1</li>
+                        </ul>
+                    </div>
+                    <img class="down" src="img/arrow_down.png" />
+                </div>
             </div>
-          </div>
         </div>
-        <div id="lcomments" class="painel">
+        <div id="dialogs">
+            <div id="dialog_new" title="New podcast">
+                <form id="form_new">
+                    <h1></h1>
+                    <input type="text" id="url" name="url" value="http://"/>
+                </form>
+            </div>
+            <h2 id="msg"></h2>
         </div>
-      </div>
-    </div>
-    <div id="dialogs">
-      <div id="dialog_new" title="New podcast">
-        <form id="form_new">
-          <h1></h1>
-          <input type="text" id="url" name="url" value="http://"/>
-        </form>
-      </div>
-      <h2 id="msg"></h2>
-    </div>
-    <!--
-    <div id="loading"></div>
-    -->
-  </body>
+        <!--
+        <div id="loading"></div>
+        -->
+    </body>
 </html>
 
 <!-- Application -->

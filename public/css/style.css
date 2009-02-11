@@ -1,196 +1,195 @@
 * {
-  padding: 0px;
-  margin: 0px;
-  font-family: Bitstream Vera Sans;
-  /*cursor: url(../img/blank.png), default;*/
+    padding: 0px;
+    margin: 0px;
+    font-family: Bitstream Vera Sans;
+    /*cursor: url(../img/blank.png), default;*/
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 body {
-  color: #FFF;
-  /* overflow: hidden; */
+    color: #FFF;
+    /* overflow: hidden; */
 }
 
 body.pc {
-  cursor: default;
+    cursor: default;
 }
 
 #page {
-  width: 790px;
-  height: 418px;
-  background-color:#151c20;
-  padding: 5px;
+    width: 790px;
+    height: 418px;
+    background-color:#151c20;
+    padding: 5px;
 }
 
 .painel {
-  background-color:#5d7280;
-  padding: 2px;
+    background-color:#5d7280;
+    padding: 2px;
 }
 
-#left {
-  width: 445px;
-  float: left;
+#right {
+    width: 445px;
+    float: right;
 }
 
 /* Menu */
 #tabs {
-  height: 60px;
-  font-size: 10pt;
-  margin-bottom: 5px;
+    height: 60px;
+    font-size: 10pt;
+    margin-bottom: 5px;
 }
 
 #tabs ul {
-  list-style: none;
+    list-style: none;
 }
 
 #tabs li {
-  float: left;
-  width: 85px;
-  text-align: center;
-  height: 60px;
-  margin-right: 4px;
+    float: left;
+    width: 85px;
+    text-align: center;
+    height: 60px;
+    margin-right: 4px;
 }
 
 #tabs li.select {
-  background: transparent url(../img/bk_menu.png) no-repeat;
+    background: transparent url(../img/bk_menu.png) no-repeat;
 }
 
 #tabs a {
-  color: #b7d8ea;
-  text-decoration: none;
-  display: block;
-  height: 60px;
-  line-height: 60px;
-  padding-top: 18px;
+    color: #b7d8ea;
+    text-decoration: none;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    padding-top: 18px;
 }
 
 #newpodcast a {
-  background: transparent url(../img/icons/new_small.png) no-repeat center 10px;
+    background: transparent url(../img/icons/new_small.png) no-repeat center 10px;
 }
 
 #podcasts a {
-	background: transparent url(../img/icons/podcasts_small.png) no-repeat center 10px;
+    background: transparent url(../img/icons/podcasts_small.png) no-repeat center 10px;
 }
 
 #downloads a {
-	background: transparent url(../img/icons/downloads_small.png) no-repeat center 10px;
-	padding-left: 4px;
-	padding-right: 4px;
+    background: transparent url(../img/icons/downloads_small.png) no-repeat center 10px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 #commenteds a {
-	background: transparent url(../img/icons/commenteds_small.png) no-repeat center 10px;
-	padding-left: 4px;
-	padding-right: 4px;
+    background: transparent url(../img/icons/commenteds_small.png) no-repeat center 10px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 #favorites a {
-	background: transparent url(../img/icons/favorites_small.png) no-repeat center 10px;
+    background: transparent url(../img/icons/favorites_small.png) no-repeat center 10px;
 }
 
 #settings a {
-	background: transparent url(../img/icons/settings_small.png) no-repeat center 10px;
+    background: transparent url(../img/icons/settings_small.png) no-repeat center 10px;
 }
 
 /* List and settings */
 #content {
-  height: 347px;
+    height: 347px;
 }
 
 #content .header {
-  display: table-row;
-  height: 60px;
+    display: table-row;
+    height: 60px;
 }
 
 #content .title, #content .numerable, #content .img {
-  display: table-cell;
-  line-height: 60px;
-  text-align: center;
+    display: table-cell;
+    line-height: 60px;
+    text-align: center;
 }
 
 #content .title {
-  font-size: 1.3em;
-  width: 317px;
-  max-width: 317px;
+    font-size: 1.3em;
+    width: 317px;
+    max-width: 317px;
 }
 
 #content .numerable {
-  font-size: 1em;
-  color: #42515B;
-  width: 60px;
+    font-size: 1em;
+    color: #42515B;
+    width: 60px;
 }
 
 #content .img {
-  width: 60px;
-  vertical-align: middle;
+    width: 60px;
+    vertical-align: middle;
 }
 
 #content .img img {
-  max-width: 55px;
-  max-height: 55px;
+    max-width: 55px;
+    max-height: 55px;
 }
 
 /*
 .podcasts h1 {
-  background: transparent url(../img/icons/podcasts.png) no-repeat 15px;
+background: transparent url(../img/icons/podcasts.png) no-repeat 15px;
 }
 
-.downloads h1 {
-  background: transparent url(../img/icons/downloads.png) no-repeat 15px;
+    .downloads h1 {
+    background: transparent url(../img/icons/downloads.png) no-repeat 15px;
 }
 
-.comments h1 {
-  background: transparent url(../img/icons/comments.png) no-repeat 15px;
+    .comments h1 {
+    background: transparent url(../img/icons/comments.png) no-repeat 15px;
 }
 
-.favorites h1 {
-  background: transparent url(../img/icons/favorites.png) no-repeat 15px;
+    .favorites h1 {
+    background: transparent url(../img/icons/favorites.png) no-repeat 15px;
 }
 
-.settings h1 {
-  background: transparent url(../img/icons/settings.png) no-repeat 15px;
+    .settings h1 {
+    background: transparent url(../img/icons/settings.png) no-repeat 15px;
 }*/
 
 #list * {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #list {
-  padding: 0 5px 0 5px;
-  margin-top: -19px;
-  height: 310px;
-  text-align: center;
-  clear: both;
+    padding: 0 5px 0 5px;
+    margin-top: -19px;
+    text-align: center;
+    clear: both;
 }
 
 #list .scrollable {
-    max-height: 265px;
+    max-height: 268px;
     overflow: hidden;
-    margin-bottom: 2px;
+    margin: 2px 0;
 }
 
 #list ul {
-  list-style: none;
-  margin: 3px 0;
+    list-style: none;
+    margin: 3px 0;
 }
 
 #hidenitems {
-  display: none;
+    display: none;
 }
 
 #list ul li:first-child {
-  border-top: solid 1px #FFF;
+    border-top: solid 1px #FFF;
 }
 
 #list ul li {
-  width: 100%;
-  height: 59px;
-  border-bottom: solid 1px #FFF;
-  background-color: #7993a3;
-  clear: both;
+    width: 100%;
+    height: 59px;
+    border-bottom: solid 1px #FFF;
+    background-color: #7993a3;
+    clear: both;
 }
 
 #list ul li.select {
@@ -198,213 +197,254 @@ body.pc {
 }
 
 #list ul li.options img {
-  float: center;
-  max-height: 55px;
-  min-height: 0;
-  max-width: 55px;
-  min-width: 0;
+    float: center;
+    max-height: 55px;
+    min-height: 0;
+    max-width: 55px;
+    min-width: 0;
 }
 
 #list ul li img{
-  float: left;
-  margin: 2px;
-  max-height: 55px;
-  min-height: 55px;
-  max-width: 55px;
-  min-width: 55px;
+    float: left;
+    margin: 2px;
+    max-height: 55px;
+    min-height: 55px;
+    max-width: 55px;
+    min-width: 55px;
 }
 
 #list ul li h1 {
-  height: 20px;
-  margin-left: 5px;
-  padding-top: 7px;
-  font-size: 12pt;
-  background-image: none;
-  float: left;
+    height: 20px;
+    margin-left: 5px;
+    padding-top: 7px;
+    font-size: 12pt;
+    background-image: none;
+    float: left;
 }
 
 #list ul li h2 {
-  height: 20px;
-  width: 100%;
-  color: #FFF;
-  font-size: 9pt;
-  float: left;
-  padding-left: 64px;
-  text-align: left;
-  margin-top: -25px;
+    height: 20px;
+    width: 100%;
+    color: #FFF;
+    font-size: 9pt;
+    float: left;
+    padding-left: 64px;
+    text-align: left;
+    margin-top: -25px;
 }
 
 #list ul li h3 {
-  font-size: 19pt;
-  color: #42515B;
-  float: right;
-  margin-top: -55px;
-  margin-right: 5px;
+    font-size: 19pt;
+    color: #42515B;
+    float: right;
+    margin-top: -55px;
+    margin-right: 5px;
 }
 
-#right {
-  width: 340px;
-  height: 100%;
-  float: right;
+#left {
+    width: 340px;
+    height: 100%;
+    float: left;
 }
 
 /* PLayer */
 #player {
-  height: 160px;
-  margin-bottom: 5px;
-  padding-top: 5px;
+    height: 160px;
+    margin-bottom: 5px;
+    padding-top: 5px;
 }
 
 #player #thumb {
-  float: left;
-  margin: 0 5px;
-  max-height: 88px;
-  max-width: 88px;
+    float: left;
+    margin: 0 5px;
+    max-height: 88px;
+    max-width: 88px;
 }
 
 #player h1 {
-  font-size: 12pt;
+    font-size: 12pt;
 }
 
 #player h2 {
-  font-size: 9pt;
-  height: 66px;
+    font-size: 9pt;
+    height: 66px;
 }
 
 #volume {
-  display: block;
-  width: 18px;
-  height: 13px;
-  margin-right: 5px;
-  margin-top: 0px;
-  margin-bottom: -50px;
-  float: right;
-  /*border: solid 1px #FF0;*/
-  background: transparent url(../img/volume.png) no-repeat center;
+    display: block;
+    width: 18px;
+    height: 13px;
+    margin-right: 5px;
+    margin-top: 0px;
+    margin-bottom: -50px;
+    float: right;
+    /*border: solid 1px #FF0;*/
+    background: transparent url(../img/volume.png) no-repeat center;
 }
 
 #controller {
-  clear: both;
-  width: 100%;
-  height: 62px;
-  padding-top: 15px;
-  /*border: solid 1px #FF0;*/
-  background: transparent url(../img/bg_controller.png) no-repeat center;
+    clear: both;
+    width: 100%;
+    height: 62px;
+    padding-top: 15px;
+    /*border: solid 1px #FF0;*/
+    background: transparent url(../img/bg_controller.png) no-repeat center;
 }
 
 #controller a {
-  display: block;
-  float: left;
-  color: #FFF;
+    display: block;
+    float: left;
+    color: #FFF;
 }
 
 #bt_player {
-  width: 52px;
-  height: 62px;
-  margin: -10px 0 0 2px;
-  text-align: center;
-  /*border: solid 1px #F00;*/
-  background: transparent url(../img/bt_player.png) no-repeat 8px 12px;
+    width: 52px;
+    height: 62px;
+    margin: -10px 0 0 2px;
+    text-align: center;
+    /*border: solid 1px #F00;*/
+    background: transparent url(../img/bt_player.png) no-repeat 8px 12px;
 }
 
 #bt_comment {
-  width: 52px;
-  height: 62px;
-  margin: -10px 0 0 0;
-  text-align: center;
-  /*border: solid 1px #F0F;*/
-  background: transparent url(../img/bt_comment.png) no-repeat 4px 12px;
+    width: 52px;
+    height: 62px;
+    margin: -10px 0 0 0;
+    text-align: center;
+    /*border: solid 1px #F0F;*/
+    background: transparent url(../img/bt_comment.png) no-repeat 4px 12px;
 }
 
 #bt_back {
-  width: 38px;
-  height: 30px;
-  /*border: solid 1px #FF0;*/
-  margin: 0;
-  background: transparent url(../img/bt_back.png) no-repeat center;
+    width: 38px;
+    height: 30px;
+    /*border: solid 1px #FF0;*/
+    margin: 0;
+    background: transparent url(../img/bt_back.png) no-repeat center;
 }
 
 #duration {
-  /*border: solid 1px #0F0;*/
-  width: 153px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
+    /*border: solid 1px #0F0;*/
+    width: 153px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
 }
 
 #bt_forward {
-  width: 38px;
-  height: 30px;
-  /*border: solid 1px #FF0;*/
-  margin: 0;
-  background: transparent url(../img/bt_forward.png) no-repeat center;
+    width: 38px;
+    height: 30px;
+    /*border: solid 1px #FF0;*/
+    margin: 0;
+    background: transparent url(../img/bt_forward.png) no-repeat center;
 }
 
 #progress {
-  margin: -30px 0 0 110px;
-  width: 222px;
+    margin: -30px 0 0 110px;
+    width: 222px;
 }
 
 #progress .slider {
-  /*height: .6em;*/
+    /*height: .6em;*/
 }
 
 .ui-slider-handle {
-  height: 1em;
-  width: 1em;
+    height: 1em;
+    width: 1em;
 }
 
 /* Comments */
 #lcomments {
-  height: 240px;
-  max-height: 240px;
-  overflow: auto;
+    position: relative;
+    height: 240px;
+    text-align: center;
+}
+
+#lcomments .scrollable {
+    max-height: 194px;
+    overflow: hidden;
+    margin: 2px 0;
+}
+
+#lcomments .up {
+    margin-top: -20px;
+}
+
+#lcomments ul {
+    list-style: none;
+}
+
+#lcomments ul li:first-child {
+    border-top: solid 1px #FFF;
+}
+
+#lcomments ul li {
+    width: 100%;
+    height: 59px;
+    border-bottom: solid 1px #FFF;
+    background-color: #7993a3;
+    clear: both;
+}
+
+#lcomments ul li.select {
+    background-color: #B37638
+}
+
+#lcomments h1 {
+    margin: 2px 0 0 5px;
+    height: 21px;
+    line-height: 21px;
+    background: transparent url(../img/h_comment.png) no-repeat left;
+    font-size: 12pt;
+    padding: 3px 0 0 24px;
+    vertical-align: middle;
+    width: 100px;
 }
 
 /* Dialogs */
 #dialogs div {
-  display: none;
+    display: none;
 }
 
 #dialog_new h1 {
-  float: left;
-  width: 34px;
-  height: 35px;
-  font-size: 10pt;
-  background: transparent url(../img/icons/new_small.png) no-repeat center 3px;
+    float: left;
+    width: 34px;
+    height: 35px;
+    font-size: 10pt;
+    background: transparent url(../img/icons/new_small.png) no-repeat center 3px;
 }
 
 .blockMsg h2 {
-  display: none;
+    display: none;
 }
 
 .blockMsg.error h2  {
-  color: #F00;
+    color: #F00;
 }
 
 .blockMsg.error #dialog_new #url {
-  border:1px dotted #FF0000;
+    border:1px dotted #FF0000;
 }
 
 #dialog_new #url {
-  float: left;
-  margin: 3px 5px;
-  padding: 2px 0px;
-  font-size: 14pt;
-  border: solid 1px #5D7280;
-  width: 87%;
+    float: left;
+    margin: 3px 5px;
+    padding: 2px 0px;
+    font-size: 14pt;
+    border: solid 1px #5D7280;
+    width: 87%;
 }
 
 #loading {
-  z-index: 100;
-  background: #FFF url(../img/m.png) no-repeat center center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+    z-index: 100;
+    background: #FFF url(../img/m.png) no-repeat center center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .init_hide {
-  visibility: hidden;
+    visibility: hidden;
 }

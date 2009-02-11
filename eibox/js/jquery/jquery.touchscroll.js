@@ -5,7 +5,7 @@
           options = { toTop: true }
         }
 
-        options = $.extend($.fn.touchscroll.defaults, options);
+        //options = $.extend($.fn.touchscroll.defaults.clone(), options);
      
         return $(this).each(function( ) {
             var self = $(this);
@@ -56,15 +56,15 @@
             // TODO : Remover as setas quando o contéudo for menor
 
             if (data.up != null && self.position >= 0) {
-                data.up.css({ opacity: '0.2'});
+                $(data.up).css({ opacity: '0.2'});
             } else {
-                data.up.css({ opacity: '1.0'});
+                $(data.up).css({ opacity: '1.0'});
             }
 
             if (data.down != null && self.position <= self.max) {
-                data.down.css({ opacity: '0.2'});
+                $(data.down).css({ opacity: '0.2'});
             } else {
-                data.down.css({ opacity: '1.0'});
+                $(data.down).css({ opacity: '1.0'});
             }
         }
 
