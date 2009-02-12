@@ -42,37 +42,47 @@
             </div>
             <div id="left">
                 <div id="player" class="painel">
-                    <img id="thumb" src="img/default.png" />
-                    <h1>Podmobile</h1>
-                    <h2></h2>
-                    <a id="volume" href="#"></a>
-                    <div id="controller">
-                        <a id="bt_player" href="#"></a>
-                        <a id="bt_comment" href="#"></a>
-                        <a id="bt_back" href="#"></a>
-                        <a id="duration" href="#">Not load</a>
-                        <a id="bt_forward" href="#"></a>
-                    </div>
-                    <div id="progress">
-                        <div class="slider init_hide">
-                            <object type="application/x-qt-plugin" classid="EiboxGui.EiboxSlider" name="slider" height="15" width="220">
-                                <param name="init" value="1, parent" />
-                            </object>
+                    <div id="playercontent">
+                        <img id="thumb" src="img/default.png" />
+                        <h1>Podmobile</h1>
+                        <h2></h2>
+                        <!--
+                        <a id="volume" href="#"></a>
+                        -->
+                        <div id="controller">
+                            <a id="bt_player" href="#"></a>
+                            <a id="bt_comment" href="#"></a>
+                            <a id="bt_back" href="#"></a>
+                            <a id="duration" href="#">Not load</a>
+                            <a id="bt_forward" href="#"></a>
+                        </div>
+                        <div id="progress">
+                            <div class="slider init_hide">
+                                <object type="application/x-qt-plugin" classid="EiboxGui.EiboxSlider" name="slider" height="15" width="220">
+                                    <param name="init" value="1, parent" />
+                                </object>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="lcomments" class="painel">
                     <h1>Comments</h1>
-                    <img class="up" src="img/arrow_up.png" />
-                    <div class="scrollable">
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 1</li>
-                            <li>Item 1</li>
-                            <li>Item 1</li>
-                        </ul>
+                    <h2 class="numerable">0</h2>
+                    <div id="commentslist">
+                        <img class="up" src="img/arrow_up.png" />
+                        <div class="scrollable">
+                            <ul>
+                                <!--
+                                <li>
+                                    <label>0:01:12 - 0:10</label>
+                                    <a class="remove" href="#"></a>
+                                    <a class="play" href="#"></a>
+                                </li>
+                                -->
+                            </ul>
+                        </div>
+                        <img class="down" src="img/arrow_down.png" />
                     </div>
-                    <img class="down" src="img/arrow_down.png" />
                 </div>
             </div>
         </div>
@@ -85,9 +95,7 @@
             </div>
             <h2 id="msg"></h2>
         </div>
-        <!--
         <div id="loading"></div>
-        -->
     </body>
 </html>
 

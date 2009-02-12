@@ -99,23 +99,24 @@ function podMobile($) {
 
         // List
         self.divs.list.find('li').live('click', self.item_click);
+        self.divs.lcomments.find('li').live('click', self.comment_click);
 
         $('#list > .scrollable').touchscroll({
             up   : '#list .up',
             down : "#list .down"
         });
 
-        $('#lcomments > .scrollable').touchscroll({
+        $('#lcomments .scrollable').touchscroll({
             up   : '#lcomments .up',
             down : "#lcomments .down"
         });
 
         self.loadList();
-        //self.init_player();
+        self.init_player();
 
         // Hidde splash
-        $('.init_hide').css('visibility', 'visible');
-        //$('#loading').fadeOut(1000);
+        //$('.init_hide').css('visibility', 'visible');
+        $('#loading').fadeOut(1000);
     }
 
     //-------------------------------------------------------------
@@ -177,10 +178,12 @@ function podMobile($) {
                         case('play'):
                             if (data.cast.download == "download" && data.cast.local != null) {
                                 self.current_player = {
+                                    podcast_id : data.podcast.id,
                                     podcast : data.padcast,
                                     cast    : data.cast,
                                     podcast_line : data.podcast_line,
-                                    cast_line    : list
+                                    cast_line    : list,
+                                    cont   : false,
                                 };
 
                                 self.divs.player.find('h1').html(data.podcast.title);
@@ -188,6 +191,8 @@ function podMobile($) {
                                 self.divs.thumb.attr('src', data.podcast.img);
                                 self.player.setCurrentSource(data.cast.local);
                             }
+                            self.load_comments();
+                            self.show_play();
                             self.player.play();
                             self.reloadCurrentContent();
                             return;
@@ -502,11 +507,70 @@ function podMobile($) {
         return "%s%s%s%s%s".sprintf(d[0], d[1], d[2], d[3], d[4]);
     }
 
+    self.show_play = function() {
+        $('#left').addClass('showplayer');
+    }
+
+    self.comment_click = function(event) {
+        if (event.toElement.nodeName == "A") {
+            var data = $(this).data('comment');
+            var link = $(event.toElement);
+            if (link.hasClass('play')) {
+                if (self.player.state() == 'GST_STATE_PLAYING') {
+                    self.player.pause();
+                    self.current_player.cont = true;
+                }
+
+                if (self.player2.state() == 'GST_STATE_PLAYING') {
+                    link.css("background-image", "url(img/media-playback-start.png)");
+                    self.player2.stop();
+                    if (self.current_player.cont) {
+                        self.player.play();
+                    }
+                    self.current_player.cont = false;
+                } else {
+                    link.css("background-image", "url(img/media-playback-stop.png)")
+                    Eibox.logging.debug(data.file);
+                    self.player2.setCurrentSource(data.file);
+                    self.player2.start();
+                    self.player2.finished.connect(function() {
+                        link.css("background-image", "url(img/media-playback-start.png)");
+                        self.player2.stop();
+                        if (self.current_player.cont) {
+                            self.player.play();
+                        }
+                        self.current_player.cont = false;
+                    });
+                }
+            } else if(link.hasClass('remove')) {
+                data.destroy();
+                self.load_comments();
+            }
+        }
+    }
+
+    self.load_comments = function() {
+        if (!Eibox.empty(self.current_player)) {
+            var list = self.divs.lcomments.find('ul');
+            list.html("");
+            comments = Comment.find({ conditions : 'cast_id = ' + self.current_player.cast.id });
+            self.divs.lcomments.find('h2').html(comments.length);
+            $(comments).each(function() {
+               var label = (convertTime(this.position) + ' - ' + convertTime(this.duration))
+               var item  = $('<li><label>' + label + '</label><a class="remove" href="#"/></a><a class="play" href="#"/></a></li>');
+               list.append(item);
+               item.data('comment', this);
+            });
+        }
+    };
+
     /**
      * Initialize player
      */
     self.init_player = function() {
-        self.player = Eibox.plugin("Player");
+        self.player  = Eibox.plugin("Player", "player");
+        self.player2  = Eibox.plugin("Player", "comment");
+        self.records = Eibox.plugin("Records");
         //self.player.start();
 
         // Slider
@@ -520,6 +584,38 @@ function podMobile($) {
         
         var bt_player = $('#bt_player').click(function() {
             (self.player.state() == 'GST_STATE_PLAYING') ? self.player.pause() : self.player.play();
+        });
+
+        self.records.finished.connect(function(duration, position, file, cont) {
+            var c = Comment.create({
+                cast_id  : self.current_player.cast.id,
+                duration : duration,
+                position : position,
+                file     : file
+            });
+            if (cont)
+                self.player.play();
+            
+            self.load_comments();
+        });
+
+        // Comments
+        $('#bt_comment').click(function() {
+            if (!Eibox.empty(self.current_player)) {
+                if (self.records.state == 'NULL') {
+                    var playing = false;
+                    if (self.player.state() == 'GST_STATE_PLAYING') {
+                        self.player.pause();
+                        playing = true;
+                    }
+                    var file = self.info.home_dir + self.current_player.podcast_id + '/comment_' + ((new Date()).getTime()) + '.ogg'
+                    self.records.record(file, slider.value, playing);
+                    $(this).css("background-image", "url(img/bt_stop.png)");
+                } else {
+                    self.records.stop();
+                    $(this).css("background-image", "url(img/bt_comment.png)");
+                }
+            }
         });
 
         self.player.totalTimeChanged.connect(function(duration) {

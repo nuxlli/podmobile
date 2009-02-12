@@ -90,6 +90,12 @@ class EiboxWindow(QtGui.QMainWindow):
         msg = msg.toAscii()
         eval("logging.%s(msg)" % str(type))
 
+    @QtCore.pyqtSignature("QString")
+    def remove_file(self, file):
+        file = str(file)
+        if (os.path.exists(file)):
+            os.remove(file)
+
     @QtCore.pyqtSignature("QString", result = "QString")
     def plugin(self, params):
         params = cjson.decode(str(params.toUtf8()))

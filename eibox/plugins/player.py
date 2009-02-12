@@ -22,10 +22,10 @@ gst.StateChangeReturn.__str__ = _gst_state__str__
 
 class Player(QtCore.QThread):
     pipeline  = None;
-    playbin   = gst.element_factory_make('playbin')
+    playbin   = None;
 
     _state    = None;
-    _mutex    = QtCore.QMutex()
+    _mutex    = None;
     _duration = None;
     
     __pyqtSignals__ = (
@@ -37,12 +37,13 @@ class Player(QtCore.QThread):
         'error(int, QString)'
     )
 
-    def __init__(self, parent):
+    def __init__(self, name, parent = None):
         QtCore.QThread.__init__(self, parent)
-        self.pipeline = gst.Pipeline('podmobile')
+        self.playbin  = gst.element_factory_make('playbin')
+        self.pipeline = gst.Pipeline(name)
         self.pipeline.add(self.playbin)
         self._state = self.pipeline.get_state()[1]
-
+        self._mutex = QtCore.QMutex()
         self.start()
 
     def lock(self):

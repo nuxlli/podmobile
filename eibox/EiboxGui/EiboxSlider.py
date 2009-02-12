@@ -11,6 +11,7 @@ from PyQt4 import QtCore, QtGui
 
 class EiboxSlider(QtGui.QSlider):
     def __init__(self, orientation = None, parent = None):
+        orientation = QtCore.Qt.Orientation(orientation)
         if parent == None:
           QtGui.QSlider.__init__(self, orientation)
         else:

@@ -116,3 +116,21 @@ var Cast = new JazzRecord.Model({
     }
   }
 });
+
+var Comment = new JazzRecord.Model({
+    table: "comments",
+    //belongsTo: { cast: "casts"},
+    columns: {
+        cast_id  : "number",
+        duration : "number",
+        position : "number",
+        file     : "text"
+    },
+
+    events: {
+        onDestroy: function() {
+            application.remove_file(this.file);
+            //Eibox.pyEval('if (os.path.exists("' + this.file + '")): os.remove(self.saveFileName)');
+        }
+    }
+});
